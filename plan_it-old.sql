@@ -9,16 +9,6 @@ CREATE TABLE `member` (
       PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-CREATE TABLE `belongs_to` (
-  `party_id` int(20) NOT NULL,
-  `username` varchar(20) NOT NULL DEFAULT '',
-     PRIMARY KEY (`party_id`,`username`),
-  FOREIGN KEY (`party_id`) REFERENCES `party` (`party_id`),
-  FOREIGN KEY (`username`) REFERENCES `member` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
 CREATE TABLE `party` (
   `party_id` int(20) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL DEFAULT '',
@@ -29,6 +19,17 @@ CREATE TABLE `party` (
   `shopping_cart_id` int(20) NOT NULL,
     PRIMARY KEY (`party_id`),
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `belongs_to` (
+  `party_id` int(20) NOT NULL,
+  `username` varchar(20) NOT NULL DEFAULT '',
+     PRIMARY KEY (`party_id`,`username`),
+  FOREIGN KEY (`party_id`) REFERENCES `party` (`party_id`),
+  FOREIGN KEY (`username`) REFERENCES `member` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
 
 
 CREATE TABLE `guest_list` (
