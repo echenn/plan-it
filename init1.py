@@ -129,7 +129,7 @@ def home():
 
         today = datetime.datetime.now()
         #fetches events in the next 3 days
-        query = 'SELECT party_id, title, type_of_party, description, start_time, end_time, FROM party NATURAL JOIN belongs_to WHERE username = %s'
+        query = 'SELECT party_id, title, type_of_party, description, start_time, end_time FROM party NATURAL JOIN belongs_to WHERE username = %s'
         cursor.execute(query, username)
         eventData = cursor.fetchall()
 
@@ -163,8 +163,18 @@ def createEvent():
 
 
         if (isFuture and isAfter):
-                query = 'insert into party VALUES (%s, %s, %s, %s, %s, %s, %s)'
+                query = 'insert into location VALUES ()'
+                cursor.execute(query)
+
+                query = 'insert into shopping_cart (location_id) VALUES ((SELECT MAX(location_id) FROM location))'
+                cursor.execute(query)
+
+                query = 'insert into party (title, type_of_party, description, start_time, end_time, shopping_cart_id) VALUES (%s, %s, %s, %s, %s, (SELECT MAX(shopping_cart_id) FROM shopping_cart))'
                 cursor.execute(query, (title, type, description, start_time, end_time))
+
+                query = 'insert into belongs_to (party_id, username) VALUES ((SELECT MAX(party_id) FROM party), %s)'
+                cursor.execute(query, (username))
+
                 conn.commit()
                 cursor.close()
                 return render_template('choose_item.html')
