@@ -31,6 +31,10 @@ def hello():
         return render_template('index.html')
 
 
+@app.route('/index')
+def index():
+    return render_template('index.html')
+
 #Define route for login
 @app.route('/login')
 def login():
@@ -174,7 +178,7 @@ def createEvent():
 
                 conn.commit()
                 cursor.close()
-                return render_template('choose_item.html')
+                return render_template('choose_zipcode.html')
         else:
                 return render_template('error.html')
 
@@ -207,6 +211,10 @@ def guestStatus():
 def chooseLocation():
         return render_template('choose_location.html')
 
+@app.route('/item', methods=['GET'])
+def chooseItem():
+        return render_template('choose_item.html')
+
 @app.route('/logout')
 def logout():
         session.pop('username')
@@ -214,14 +222,18 @@ def logout():
 
 @app.route('/api/location', methods=['GET'])
 def apiLocation():
+    zipcode = request.args.get('zipcode')
+
+
     API_KEY = 'RS5xFR5EjvEsNEhAyN5sxFG0FnzmFdsJ6TyZoV6tXUpRI-FEJXxRouwTq54K_0a-DJCxag8L7wpjahFxz-GR1iSxYMfpv6oM3cVZoz9J-upyiP8ztxQ26g3B8n69WnYx'
     url = 'https://api.yelp.com/v3/businesses/search'
     headers = {
         'Authorization': 'Bearer ' + API_KEY
     }
     values = {
+        'limit': 5,
         'term': 'Restaurants',
-        'location': '11201'
+        'location': zipcode
     }
     r = requests.get(url, headers=headers, params=values)
 

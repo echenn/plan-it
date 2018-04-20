@@ -1,0 +1,19 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+<p> Let us know your location: <br />
+    <input type="int" maxlength="5" name="value" id="zipcode" />
+    <input type="button" value="submit" onclick="jump()" />
+</p>
+</body>
+<script>
+    function jump() {
+        var zipcode = document.getElementById('zipcode').value;
+        location = '/location?zipcode='+zipcode;
+    }
+</script>
+</html>
