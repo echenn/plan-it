@@ -336,12 +336,20 @@ def apiLocation():
 
 @app.route('/InviteGuest', methods=['GET', 'POST'])
 def InviteGuest():
+        username = session['username']
+        cursor = conn.cursor();
+        query = 'SELECT email FROM member WHERE username = %s'
+        cursor.execute(query, username)
+        Data = cursor.fetchone()
+        user_email = Data['email']
+
+
         name = request.form['name']
         email = request.form['email']
         content = 'Dear ' + name + ', you are invited to a private party!'
         client = boto3.client('ses')
         response = client.send_email(
-                Source='sl5419@nyu.edu',
+                Source = user_email,
                 Destination={
                         'ToAddresses': [
                                 email
@@ -360,7 +368,7 @@ def InviteGuest():
                         }
                 },
                 ReplyToAddresses=[
-                        'sl5419@nyu.edu',
+                        user_email,
                 ],
         )
         return render_template('invite_guest.html')
