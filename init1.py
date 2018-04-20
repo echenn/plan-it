@@ -1,8 +1,13 @@
 #Import Flask Library
 import hashlib
 import datetime
-from flask import Flask, render_template, request, session, url_for, redirect
+from flask import Flask, render_template, request, session, url_for, redirect, jsonify
 import pymysql.cursors
+# import urllib.request
+# import urllib.parse
+import requests
+import json
+
 #from sqlalchemy.exc import IntregrityError
 
 #Initialize the app from Flask
@@ -138,14 +143,6 @@ def home():
         return render_template('home.html', eventData = eventData)
 
 
-
-'''
-Create an event : If the user is authorized to do so,
-he or she creates a new event for a group, providing
-all the needed data, via forms. The application should
-prevent unauthorized users from doing this action.
-'''
-
 @app.route('/create_event', methods=['GET', 'POST'])
 def createEvent():
         username=session['username']
@@ -206,10 +203,31 @@ def guestStatus():
         else:
                 return render_template('error.html')
 
+@app.route('/location', methods=['GET'])
+def chooseLocation():
+        return render_template('choose_location.html')
+
 @app.route('/logout')
 def logout():
         session.pop('username')
         return render_template('bye.html')
+
+@app.route('/api/location', methods=['GET'])
+def apiLocation():
+    API_KEY = 'RS5xFR5EjvEsNEhAyN5sxFG0FnzmFdsJ6TyZoV6tXUpRI-FEJXxRouwTq54K_0a-DJCxag8L7wpjahFxz-GR1iSxYMfpv6oM3cVZoz9J-upyiP8ztxQ26g3B8n69WnYx'
+    url = 'https://api.yelp.com/v3/businesses/search'
+    headers = {
+        'Authorization': 'Bearer ' + API_KEY
+    }
+    values = {
+        'term': 'Restaurants',
+        'location': '11201'
+    }
+    r = requests.get(url, headers=headers, params=values)
+
+    return jsonify(r.json())
+
+
                 
 app.secret_key = 'some key that you will never guess'
 #Run the app on localhost port 5000
