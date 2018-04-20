@@ -2,15 +2,26 @@ body {
     font-family: courier;
     text-indent: 5em;
 }
+h1{
+    text-align: center;
 
+}
+p{
+    text-indent: 5em;
+}
+
+#registerForm {
+    position: absolute;
+    left: 25%;
+    bottom: 20%;
+
+}
 
 body #bdaypic {
 	display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-    height 50%;
     opacity:0.2;
     position: relative
-
 }

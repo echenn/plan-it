@@ -1,16 +1,23 @@
 body {
     font-family: courier;
     text-indent: 5em;
+	}
+h1{
+    text-align: center;
 }
 
+#loginForm {
+    position: absolute;
+    left: 30%;
+    bottom: 20%;
+
+}
 
 body #bdaypic {
 	display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-    height 50%;
     opacity:0.2;
     position: relative
-
 }

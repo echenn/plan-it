@@ -6,3 +6,8 @@ body #bdaypic {
     opacity:0.2;
     position: relative
 }
+
+body {
+font-family: courier;
+    text-indent: 5em;
+ }
