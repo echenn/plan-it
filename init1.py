@@ -36,6 +36,27 @@ def hello():
 def index():
     return render_template('index.html')
 
+@app.route('/shopping')
+def shopping():
+        cursor = conn.cursor();
+
+        cursor = conn.cursor()
+        query = 'SELECT party_id FROM party WHERE party_id = (SELECT MAX(party_id) FROM party)'
+        cursor.execute(query)
+        result = cursor.fetchone()
+        shopping_id = result['party_id']
+        query = 'SELECT item, quantity, price FROM item_list WHERE shopping_cart_id = %s'
+        cursor.execute(query, shopping_id)
+        ShoppingData = cursor.fetchall()
+        cursor.close()
+
+        cursor.close()
+        return render_template('shopping_cart.html', ShoppingData=ShoppingData)
+
+@app.route('/item')
+def item():
+        return render_template('choose_item.html')
+
 #Define route for login
 @app.route('/login')
 def login():
@@ -53,6 +74,70 @@ def party_type_search():
 @app.route('/guest')
 def guest():
         return render_template('invite_guest.html')
+
+@app.route('/addToShoppingCart1', methods=['GET', 'POST'])
+def addToShoppingCart1():
+        quantity = request.form['quantity']
+        item = 'Balloon'
+        price = 10
+        cursor = conn.cursor()
+        query = 'SELECT party_id FROM party WHERE party_id = (SELECT MAX(party_id) FROM party)'
+        cursor.execute(query)
+        result = cursor.fetchone()
+        shopping_id = result['party_id']
+        query2 = 'INSERT INTO item_list VALUES(%s, %s, %s, %s)'
+        cursor.execute(query2, (shopping_id, item, quantity, price))
+        conn.commit()
+        cursor.close()
+        return render_template('choose_item.html')
+
+@app.route('/addToShoppingCart2', methods=['GET', 'POST'])
+def addToShoppingCart2():
+        quantity = request.form['quantity']
+        item = 'PartyHats'
+        price = 7
+        cursor = conn.cursor()
+        query = 'SELECT party_id FROM party WHERE party_id = (SELECT MAX(party_id) FROM party)'
+        cursor.execute(query)
+        result = cursor.fetchone()
+        shopping_id = result['party_id']
+        query2 = 'INSERT INTO item_list VALUES(%s, %s, %s, %s)'
+        cursor.execute(query2, (shopping_id, item, quantity, price))
+        conn.commit()
+        cursor.close()
+        return render_template('choose_item.html')
+
+@app.route('/addToShoppingCart3', methods=['GET', 'POST'])
+def addToShoppingCart3():
+        quantity = request.form['quantity']
+        item = 'Utensils'
+        price = 17
+        cursor = conn.cursor()
+        query = 'SELECT party_id FROM party WHERE party_id = (SELECT MAX(party_id) FROM party)'
+        cursor.execute(query)
+        result = cursor.fetchone()
+        shopping_id = result['party_id']
+        query2 = 'INSERT INTO item_list VALUES(%s, %s, %s, %s)'
+        cursor.execute(query2, (shopping_id, item, quantity, price))
+        conn.commit()
+        cursor.close()
+        return render_template('choose_item.html')
+
+@app.route('/addToShoppingCart4', methods=['GET', 'POST'])
+def addToShoppingCart4():
+        quantity = request.form['quantity']
+        item = 'Tablecloths'
+        price = 12
+        cursor = conn.cursor()
+        query = 'SELECT party_id FROM party WHERE party_id = (SELECT MAX(party_id) FROM party)'
+        cursor.execute(query)
+        result = cursor.fetchone()
+        shopping_id = result['party_id']
+        query2 = 'INSERT INTO item_list VALUES(%s, %s, %s, %s)'
+        cursor.execute(query2, (shopping_id, item, quantity, price))
+        conn.commit()
+        cursor.close()
+        return render_template('choose_item.html')
 
 #Authenticates the login
 @app.route('/loginAuth', methods=['GET', 'POST'])
