@@ -7,6 +7,7 @@ import pymysql.cursors
 # import urllib.parse
 import requests
 import json
+import boto3
 
 #from sqlalchemy.exc import IntregrityError
 
@@ -44,6 +45,14 @@ def login():
 @app.route('/register')
 def register():
         return render_template('register.html')
+
+@app.route('/party_type_search', methods=['GET', 'POST'])
+def party_type_search():
+        return render_template('choose_zipcode.html')
+
+@app.route('/guest')
+def guest():
+        return render_template('invite_guest.html')
 
 #Authenticates the login
 @app.route('/loginAuth', methods=['GET', 'POST'])
@@ -220,7 +229,7 @@ def logout():
         session.pop('username')
         return render_template('bye.html')
 
-@app.route('/api/location', methods=['GET'])
+@app.route('/api/location', methods=['GET', 'POST'])
 def apiLocation():
     zipcode = request.args.get('zipcode')
 
@@ -240,7 +249,38 @@ def apiLocation():
     return jsonify(r.json())
 
 
-                
+@app.route('/InviteGuest', methods=['GET', 'POST'])
+def InviteGuest():
+        name = request.form['name']
+        email = request.form['email']
+        content = 'Dear ' + name + ', you are invited to a private party!'
+        client = boto3.client('ses')
+        response = client.send_email(
+                Source='sl5419@nyu.edu',
+                Destination={
+                        'ToAddresses': [
+                                email
+                        ],
+                },
+                Message={
+                        'Subject': {
+                                'Data': 'You Are Invited to a Party!',
+                                'Charset': 'UTF-8'
+                        },
+                        'Body': {
+                                'Text': {
+                                        'Data': content,
+                                        'Charset': 'UTF-8'
+                                },
+                        }
+                },
+                ReplyToAddresses=[
+                        'sl5419@nyu.edu',
+                ],
+        )
+        return render_template('invite_guest.html')
+
+
 app.secret_key = 'some key that you will never guess'
 #Run the app on localhost port 5000
 #debug = True -> you don't have to restart flask
