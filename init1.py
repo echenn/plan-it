@@ -178,7 +178,7 @@ def createEvent():
 
                 conn.commit()
                 cursor.close()
-                return render_template('choose_item.html')
+                return render_template('choose_zipcode.html')
         else:
                 return render_template('error.html')
 

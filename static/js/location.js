@@ -13,10 +13,13 @@ function initMap() {
 }
 
 function getYelp() {
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var zipcode = url.searchParams.get("zipcode");
     $.get({
         url: '/api/location',
         data: {
-            zipcode: '11201'
+            zipcode: zipcode,
         },
         success: function(data) {
             console.log(data);
