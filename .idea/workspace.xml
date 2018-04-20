@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c976e171-bb84-43cc-8f41-020d7b46ee16" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/choose_zipcode.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/init1.py" beforeDir="false" afterPath="$PROJECT_DIR$/init1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/location.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/location.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/choose_item.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/choose_item.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,8 +18,8 @@
       <file leaf-file-name="init1.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/init1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="220" column="41" lean-forward="true" selection-start-line="220" selection-start-column="4" selection-end-line="220" selection-end-column="41" />
+            <state relative-caret-position="211">
+              <caret line="214" column="17" lean-forward="true" selection-start-line="214" selection-start-column="17" selection-end-line="214" selection-end-column="17" />
               <folding>
                 <element signature="e#22#36#0" expanded="true" />
               </folding>
@@ -40,26 +39,33 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" selection-start-line="11" selection-end-line="11" selection-end-column="36" />
+            <state relative-caret-position="390">
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="guest_status.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/guest_status.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-46" />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="choose_item.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/choose_item.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="11" />
+            <state relative-caret-position="240">
+              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="choose_zipcode.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="choose_zipcode.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/choose_zipcode.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
+            <state relative-caret-position="195">
+              <caret line="13" selection-start-line="13" selection-end-line="16" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -90,8 +96,8 @@
       <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="3" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
+            <state relative-caret-position="280">
+              <caret line="27" column="13" lean-forward="true" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -109,6 +115,7 @@
     <findStrings>
       <find>an_eve</find>
       <find>an_</find>
+      <find>choose</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -123,9 +130,9 @@
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/templates/choose_location.html" />
         <option value="$PROJECT_DIR$/templates/bye.html" />
-        <option value="$PROJECT_DIR$/init1.py" />
         <option value="$PROJECT_DIR$/templates/login.html" />
         <option value="$PROJECT_DIR$/templates/choose_zipcode.html" />
+        <option value="$PROJECT_DIR$/init1.py" />
       </list>
     </option>
   </component>
@@ -216,6 +223,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="42" y="26" width="1400" height="925" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -277,13 +285,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/init.py" />
-    <entry file="file://$PROJECT_DIR$/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="3" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -305,23 +306,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/error.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/choose_item.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" selection-start-line="11" selection-end-line="11" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -336,21 +320,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/choose_zipcode.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" selection-start-line="13" selection-end-line="16" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/error.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/init1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="220" column="41" lean-forward="true" selection-start-line="220" selection-start-column="4" selection-end-line="220" selection-end-column="41" />
+        <state relative-caret-position="211">
+          <caret line="214" column="17" lean-forward="true" selection-start-line="214" selection-start-column="17" selection-end-line="214" selection-end-column="17" />
           <folding>
             <element signature="e#22#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/choose_zipcode.html">
+    <entry file="file://$PROJECT_DIR$/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
+        <state relative-caret-position="280">
+          <caret line="27" column="13" lean-forward="true" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/choose_item.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/guest_status.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-46" />
       </provider>
     </entry>
   </component>

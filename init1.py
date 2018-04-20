@@ -211,6 +211,10 @@ def guestStatus():
 def chooseLocation():
         return render_template('choose_location.html')
 
+@app.route('/item', methods=['GET'])
+def chooseItem():
+        return render_template('choose_item.html')
+
 @app.route('/logout')
 def logout():
         session.pop('username')

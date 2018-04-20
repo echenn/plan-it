@@ -36,6 +36,8 @@ function getYelp() {
                             +"<span>"+address+"</span>"
                             +"</br>"
                             +"<span>"+phone+"</span>"
+                            +"</br>"
+                            +"<button type='button' onClick='addRest(\""+name+"\",\""+address+"\")'>Select</button>"
                 });
 
                 var marker = new google.maps.Marker({
@@ -51,7 +53,23 @@ function getYelp() {
     });
 }
 
-function sleep (time) {
+function addRest(name, address) {
+    // var params = {
+    //     name: name,
+    //     address: address
+    // }
+    // url = '/item?'+encodeQueryData(params);
+    // location = url;
+}
+
+function encodeQueryData(data) {
+   let ret = [];
+   for (let d in data)
+     ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
+   return ret.join('&');
+}
+
+function sleep(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
 
