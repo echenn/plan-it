@@ -54,12 +54,13 @@ function getYelp() {
 }
 
 function addRest(name, address) {
-    // var params = {
-    //     name: name,
-    //     address: address
-    // }
-    // url = '/item?'+encodeQueryData(params);
-    // location = url;
+     var params = {
+         name: name,
+         address: address
+     }
+     //url = '/item?'+encodeQueryData(params);
+     url = '/item'
+     location = url;
 }
 
 function encodeQueryData(data) {
