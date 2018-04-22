@@ -12,7 +12,11 @@ p{
 
 #registerForm {
     position: absolute;
+<<<<<<< HEAD
     left: 30%;
+=======
+    left: 25%;
+>>>>>>> 2730a8826cefde259039148052bcc44ba0f34221
     bottom: 20%;
 
 }

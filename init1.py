@@ -7,6 +7,7 @@ import pymysql.cursors
 # import urllib.parse
 import requests
 import json
+import boto3
 
 #from sqlalchemy.exc import IntregrityError
 
@@ -35,6 +36,27 @@ def hello():
 def index():
     return render_template('index.html')
 
+@app.route('/shopping')
+def shopping():
+        cursor = conn.cursor();
+
+        cursor = conn.cursor()
+        query = 'SELECT party_id FROM party WHERE party_id = (SELECT MAX(party_id) FROM party)'
+        cursor.execute(query)
+        result = cursor.fetchone()
+        shopping_id = result['party_id']
+        query = 'SELECT item, quantity, price FROM item_list WHERE shopping_cart_id = %s'
+        cursor.execute(query, shopping_id)
+        ShoppingData = cursor.fetchall()
+        cursor.close()
+
+        cursor.close()
+        return render_template('shopping_cart.html', ShoppingData=ShoppingData)
+
+@app.route('/item')
+def item():
+        return render_template('choose_item.html')
+
 #Define route for login
 @app.route('/login')
 def login():
@@ -44,6 +66,78 @@ def login():
 @app.route('/register')
 def register():
         return render_template('register.html')
+
+@app.route('/party_type_search', methods=['GET', 'POST'])
+def party_type_search():
+        return render_template('choose_zipcode.html')
+
+@app.route('/guest')
+def guest():
+        return render_template('invite_guest.html')
+
+@app.route('/addToShoppingCart1', methods=['GET', 'POST'])
+def addToShoppingCart1():
+        quantity = request.form['quantity']
+        item = 'Balloon'
+        price = 10
+        cursor = conn.cursor()
+        query = 'SELECT party_id FROM party WHERE party_id = (SELECT MAX(party_id) FROM party)'
+        cursor.execute(query)
+        result = cursor.fetchone()
+        shopping_id = result['party_id']
+        query2 = 'INSERT INTO item_list VALUES(%s, %s, %s, %s)'
+        cursor.execute(query2, (shopping_id, item, quantity, price))
+        conn.commit()
+        cursor.close()
+        return render_template('choose_item.html')
+
+@app.route('/addToShoppingCart2', methods=['GET', 'POST'])
+def addToShoppingCart2():
+        quantity = request.form['quantity']
+        item = 'PartyHats'
+        price = 7
+        cursor = conn.cursor()
+        query = 'SELECT party_id FROM party WHERE party_id = (SELECT MAX(party_id) FROM party)'
+        cursor.execute(query)
+        result = cursor.fetchone()
+        shopping_id = result['party_id']
+        query2 = 'INSERT INTO item_list VALUES(%s, %s, %s, %s)'
+        cursor.execute(query2, (shopping_id, item, quantity, price))
+        conn.commit()
+        cursor.close()
+        return render_template('choose_item.html')
+
+@app.route('/addToShoppingCart3', methods=['GET', 'POST'])
+def addToShoppingCart3():
+        quantity = request.form['quantity']
+        item = 'Utensils'
+        price = 17
+        cursor = conn.cursor()
+        query = 'SELECT party_id FROM party WHERE party_id = (SELECT MAX(party_id) FROM party)'
+        cursor.execute(query)
+        result = cursor.fetchone()
+        shopping_id = result['party_id']
+        query2 = 'INSERT INTO item_list VALUES(%s, %s, %s, %s)'
+        cursor.execute(query2, (shopping_id, item, quantity, price))
+        conn.commit()
+        cursor.close()
+        return render_template('choose_item.html')
+
+@app.route('/addToShoppingCart4', methods=['GET', 'POST'])
+def addToShoppingCart4():
+        quantity = request.form['quantity']
+        item = 'Tablecloths'
+        price = 12
+        cursor = conn.cursor()
+        query = 'SELECT party_id FROM party WHERE party_id = (SELECT MAX(party_id) FROM party)'
+        cursor.execute(query)
+        result = cursor.fetchone()
+        shopping_id = result['party_id']
+        query2 = 'INSERT INTO item_list VALUES(%s, %s, %s, %s)'
+        cursor.execute(query2, (shopping_id, item, quantity, price))
+        conn.commit()
+        cursor.close()
+        return render_template('choose_item.html')
 
 #Authenticates the login
 @app.route('/loginAuth', methods=['GET', 'POST'])
@@ -220,7 +314,7 @@ def logout():
         session.pop('username')
         return render_template('bye.html')
 
-@app.route('/api/location', methods=['GET'])
+@app.route('/api/location', methods=['GET', 'POST'])
 def apiLocation():
     zipcode = request.args.get('zipcode')
 
@@ -240,7 +334,46 @@ def apiLocation():
     return jsonify(r.json())
 
 
-                
+@app.route('/InviteGuest', methods=['GET', 'POST'])
+def InviteGuest():
+        username = session['username']
+        cursor = conn.cursor();
+        query = 'SELECT email FROM member WHERE username = %s'
+        cursor.execute(query, username)
+        Data = cursor.fetchone()
+        user_email = Data['email']
+
+
+        name = request.form['name']
+        email = request.form['email']
+        content = 'Dear ' + name + ', you are invited to a private party!'
+        client = boto3.client('ses')
+        response = client.send_email(
+                Source = user_email,
+                Destination={
+                        'ToAddresses': [
+                                email
+                        ],
+                },
+                Message={
+                        'Subject': {
+                                'Data': 'You Are Invited to a Party!',
+                                'Charset': 'UTF-8'
+                        },
+                        'Body': {
+                                'Text': {
+                                        'Data': content,
+                                        'Charset': 'UTF-8'
+                                },
+                        }
+                },
+                ReplyToAddresses=[
+                        user_email,
+                ],
+        )
+        return render_template('invite_guest.html')
+
+
 app.secret_key = 'some key that you will never guess'
 #Run the app on localhost port 5000
 #debug = True -> you don't have to restart flask

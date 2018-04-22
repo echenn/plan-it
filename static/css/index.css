@@ -28,7 +28,11 @@ body #bdaypic {
 
 #searchForm {
     position: absolute;
+<<<<<<< HEAD
     left: 35%;
+=======
+    left: 30%;
+>>>>>>> 2730a8826cefde259039148052bcc44ba0f34221
     bottom: 20%;
 
 }
@@ -39,5 +43,9 @@ body form input {
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
+<<<<<<< HEAD
+=======
+    border: 2px solid cyan;
+>>>>>>> 2730a8826cefde259039148052bcc44ba0f34221
     border-radius: 4px;
 }
