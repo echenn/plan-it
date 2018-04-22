@@ -28,7 +28,7 @@ body #bdaypic {
 
 #searchForm {
     position: absolute;
-    left: 30%;
+    left: 35%;
     bottom: 20%;
 
 }
@@ -39,6 +39,5 @@ body form input {
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-    border: 2px solid cyan;
     border-radius: 4px;
 }

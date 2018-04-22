@@ -11,3 +11,19 @@ body {
 font-family: courier;
     text-indent: 5em;
  }
+
+ .AboutMe {
+    position: absolute;
+    left: 35%;
+    bottom: 40%;
+
+ }
+
+ .faq {
+    position: absolute;
+    left: 35%;
+    bottom: 20%;
+    font-size: 15px;
+
+ }
+
