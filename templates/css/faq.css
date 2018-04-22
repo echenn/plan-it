@@ -8,22 +8,23 @@ body #bdaypic {
 }
 
 body {
-font-family: courier;
+    font-family: courier;
     text-indent: 5em;
  }
 
  .AboutMe {
     position: absolute;
-    left: 35%;
-    bottom: 40%;
+    left: 37%;
+    bottom: 50%;
+    font-size:30vm;
 
  }
 
  .faq {
     position: absolute;
-    left: 35%;
-    bottom: 20%;
-    font-size: 15px;
+    left: 37%;
+    bottom: 25%;
+    font-size: 30vm;
 
  }
 

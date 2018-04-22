@@ -14,3 +14,11 @@ body #bdaypic {
     position: relative
 
 }
+
+ .contacts {
+    position: absolute;
+    left: 30%;
+    bottom: 45%;
+    font-size: 30vm;
+
+ }
