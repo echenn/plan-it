@@ -1,0 +1,15 @@
+body {
+    font-family: courier;
+    text-indent: 5em;
+ }
+
+.media {
+    list-style:none;
+    list-style:none;
+    list-style-type:none;
+    list-style-image:none;
+}
+
+img {
+    padding: 15px;
+}
