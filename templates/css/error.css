@@ -1,0 +1,22 @@
+body {
+    font-family: courier;
+    text-indent: 5em;
+
+}
+
+body #bdaypic {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    opacity:0.2;
+    position: relative
+}
+
+p {
+    position: absolute;
+    left: 35%;
+    bottom: 50%;
+    font-size:40vm;
+
+}

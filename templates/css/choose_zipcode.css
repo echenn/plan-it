@@ -1,0 +1,29 @@
+body {
+    font-family: courier;
+    text-indent: 5em;
+}
+
+body #bdaypic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    opacity:0.2;
+    position: relative
+}
+
+#locationForm {
+    position: absolute;
+    left: 30%;
+    bottom: 55%;
+
+}
+
+p {
+    font-weight:bold;
+    position: absolute;
+    left: 30%;
+    bottom: 60%;
+    font-size:40vm
+
+}
