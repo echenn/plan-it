@@ -1,24 +1,22 @@
 body {
     font-family: courier;
     text-indent: 5em;
-}
 
+}
 
 body #bdaypic {
 	display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-    height 50%;
     opacity:0.2;
     position: relative
-
 }
 
- .contacts {
+p {
     position: absolute;
-    left: 30%;
-    bottom: 45%;
-    font-size: 30vm;
+    left: 35%;
+    bottom: 50%;
+    font-size:40vm;
 
- }
+}

@@ -12,19 +12,10 @@ body {
     text-indent: 5em;
  }
 
- .AboutMe {
+
+#inviteForm {
     position: absolute;
-    left: 37%;
-    bottom: 50%;
-    font-size:30vm;
+    left: 35%;
+    bottom: 40%;
 
- }
-
- .faq {
-    position: absolute;
-    left: 37%;
-    bottom: 25%;
-    font-size: 30vm;
-
- }
-
+}

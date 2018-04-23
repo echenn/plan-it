@@ -36,7 +36,7 @@ def hello():
 def index():
     return render_template('index.html')
 
-@app.route('/shopping')
+@app.route('/shopping', methods=['GET', 'POST'])
 def shopping():
         cursor = conn.cursor();
 

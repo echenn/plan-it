@@ -3,22 +3,27 @@ body {
     text-indent: 5em;
 }
 
-
 body #bdaypic {
-	display: block;
+    display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-    height 50%;
     opacity:0.2;
     position: relative
+}
+
+#locationForm {
+    position: absolute;
+    left: 30%;
+    bottom: 55%;
 
 }
 
- .contacts {
+p {
+    font-weight:bold;
     position: absolute;
     left: 30%;
-    bottom: 45%;
-    font-size: 30vm;
+    bottom: 60%;
+    font-size:40vm
 
- }
+}
