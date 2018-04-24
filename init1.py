@@ -8,7 +8,7 @@ import pymysql.cursors
 import requests
 import json
 import boto3
-
+import datetime
 #from sqlalchemy.exc import IntregrityError
 
 #Initialize the app from Flask
@@ -66,6 +66,22 @@ def login():
 @app.route('/register')
 def register():
         return render_template('register.html')
+
+@app.route('/zipcode')
+def zipcode():
+        return render_template('choose_zipcode.html')
+
+@app.route('/contact')
+def contact():
+        return render_template('contact.html')
+
+@app.route('/faq')
+def faq():
+        return render_template('faq.html')
+
+@app.route('/bye')
+def bye():
+        return render_template('bye.html')
 
 @app.route('/party_type_search', methods=['GET', 'POST'])
 def party_type_search():
@@ -293,13 +309,25 @@ def guestStatus():
                 party_exist = True
   
         if (party_exist):
-                query = 'SELECT guest_name, email, status FROM guest_list NATUAL JOIN guest WHERE party_id = %s'
+                query = 'SELECT name, email, status FROM guest_list NATUAL JOIN guest WHERE party_id = %s'
                 cursor.execute(query, party_id)
                 guestData = cursor.fetchall()
                 cursor.close()
-                return render_template('guest_status.html')
+                return render_template('guest_status.html', guestData = guestData)
         else:
                 return render_template('error.html')
+
+
+@app.route('/guest_status2', methods=['GET', 'POST'])
+def guestStatus2():
+        username = session['username']
+        cursor = conn.cursor();
+
+        query = 'SELECT name, email, status FROM guest_list WHERE party_id = (SELECT MAX(party_id) FROM party)'
+        cursor.execute(query)
+        guestData = cursor.fetchall()
+        cursor.close()
+        return render_template('guest_status.html', guestData = guestData)
 
 @app.route('/location', methods=['GET'])
 def chooseLocation():
@@ -338,15 +366,29 @@ def apiLocation():
 def InviteGuest():
         username = session['username']
         cursor = conn.cursor();
-        query = 'SELECT email FROM member WHERE username = %s'
+        query = 'SELECT firstname, email FROM member WHERE username = %s'
         cursor.execute(query, username)
         Data = cursor.fetchone()
         user_email = Data['email']
+        user_name = Data['firstname']
 
+        query = 'SELECT title, description, start_time, end_time FROM party WHERE party_id = (SELECT MAX(party_id) FROM party)'
+        cursor.execute(query)
+        result = cursor.fetchone()
+        title = result['title']
+        description = result['description']
+        start_time_time = result['start_time']
+        start_time = start_time_time.strftime("%Y-%m-%d %H:%M:%S")
+        end_time_time = result['end_time']
+        end_time = end_time_time.strftime("%Y-%m-%d %H:%M:%S")
 
         name = request.form['name']
         email = request.form['email']
-        content = 'Dear ' + name + ', you are invited to a private party!'
+        query = 'insert into guest_list (party_id, name, email) VALUES ((SELECT MAX(party_id) FROM party), %s, %s)'
+        cursor.execute(query, (name, email))
+        conn.commit()
+
+        content = 'Dear ' + name + ', you are invited to a private party!\n' + 'Your friend, ' + user_name + 'is using plan-it and created a ' + title +'. This party is ' + description + '. The party starts at ' + start_time + ', and ends at '+ end_time+'.\n\n' +'We will see you at the party! :)'
         client = boto3.client('ses')
         response = client.send_email(
                 Source = user_email,
@@ -371,6 +413,7 @@ def InviteGuest():
                         user_email,
                 ],
         )
+
         return render_template('invite_guest.html')
 
 

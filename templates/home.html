@@ -8,26 +8,26 @@
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css')}}">
 </head>
 <body>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <a class="navbar-brand" href="home.html">plan-it</a>
-    </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a href="index.html"> Search <span class="sr-only">(current)</span></a></li>
-        <li><a href="login.html">Login</a></li>
-        <li><a href="register.html">Register</a></li>
-        <li><a href="invite_guests.html">Invite Guests</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="Contact.html">Contact</a></li>
+<nav class="navbar navbar-default" style="font-family: courier">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/home">plan-it</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active" ><a href="/index"> Search <span class="sr-only">(current)</span></a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/zipcode">Options</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/contact">Contact</a></li>
 
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
 
 
 <h1>Welcome {{username}}</h1>
@@ -56,7 +56,7 @@
         </tr>
         {% endfor %}
     </table>
-
+</br>
 <h2>Create an Party!</h2>
     <form action="/create_event" method="POST">
         <input type="text" name="title" placeholder="party title" required /> </br>
@@ -66,7 +66,12 @@
         <input type="text" name="end_time" placeholder="end_time(YYYY-MM-DD HH:MI:SS)" required /> </br>
         <input type="submit" value="Create me!" />
     </form>
-
+</br>
+<h2>Check Your Guest List</h2>
+    <form action="/guest_status" method="POST">
+        <input type="int" name="party_id" placeholder="Party ID" required /> </br>
+        <input type="submit" value="Check Guest Status" />
+    </form>
 <a href="/logout">Logout</a>
 
 </body>
