@@ -309,7 +309,7 @@ def guestStatus():
                 party_exist = True
   
         if (party_exist):
-                query = 'SELECT name, email, status FROM guest_list NATUAL JOIN party WHERE party.party_id = %s'
+                query = 'SELECT name, email, status FROM guest_list WHERE party_id = %s'
                 cursor.execute(query, party_id)
                 guestData = cursor.fetchall()
                 cursor.close()
