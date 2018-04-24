@@ -40,6 +40,7 @@
 
 <h2>All Parties You Have Hosted</h2>
     <table>
+        <th>Party ID </th>
         <th>Title </th>
         <th>Type </th>
         <th>Description </th>
@@ -48,6 +49,7 @@
 
         {% for line in eventData %}
         <tr>
+            <td>{{line.party_id}}</td>
             <td>{{line.title}}</td>
             <td>{{line.type_of_party}}</td>
             <td>{{line.description}}</td>

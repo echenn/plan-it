@@ -309,7 +309,7 @@ def guestStatus():
                 party_exist = True
   
         if (party_exist):
-                query = 'SELECT name, email, status FROM guest_list NATUAL JOIN guest WHERE party_id = %s'
+                query = 'SELECT name, email, status FROM guest_list NATUAL JOIN party WHERE party.party_id = %s'
                 cursor.execute(query, party_id)
                 guestData = cursor.fetchall()
                 cursor.close()
@@ -388,7 +388,7 @@ def InviteGuest():
         cursor.execute(query, (name, email))
         conn.commit()
 
-        content = 'Dear ' + name + ', you are invited to a private party!\n' + 'Your friend, ' + user_name + 'is using plan-it and created a ' + title +'. This party is ' + description + '. The party starts at ' + start_time + ', and ends at '+ end_time+'.\n\n' +'We will see you at the party! :)'
+        content = 'Dear ' + name + ', you are invited to a private party!\n' + 'Your friend, ' + user_name + ' is using plan-it and created a ' + title +'. This party is ' + description + '. The party starts at ' + start_time + ', and ends at '+ end_time+'.\n\n' +'We will see you at the party! :)'
         client = boto3.client('ses')
         response = client.send_email(
                 Source = user_email,
