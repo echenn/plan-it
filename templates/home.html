@@ -5,7 +5,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css')}}">
+	<link rel="stylesheet" type="text/css" href="css/home.css">
+    <!–– //{{ url_for('static', filename='css/home.css')}} -–>
+
 </head>
 <body>
 <nav class="navbar navbar-default" style="font-family: courier">
@@ -17,7 +19,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active" ><a href="/index"> Search <span class="sr-only">(current)</span></a></li>
+            <li><a href="/index"> Search <span class="sr-only">(current)</span></a></li>
             <li><a href="/login">Login</a></li>
             <li><a href="/register">Register</a></li>
             <li><a href="/zipcode">Options</a></li>
@@ -39,7 +41,7 @@
 </style>
 
 <h2>All Parties You Have Hosted</h2>
-    <table>
+    <table style="">
         <th>Party ID </th>
         <th>Title </th>
         <th>Type </th>
@@ -60,7 +62,9 @@
     </table>
 </br>
 <h2>Create an Party!</h2>
-    <form action="/create_event" method="POST">
+    <div class="container">
+    <form id='createPartyForm' action="/create_event" method="POST">
+        <br>
         <input type="text" name="title" placeholder="party title" required /> </br>
         <input type="text" name="type_of_party" placeholder="type of party" required /> </br>
         <input type="text" name="description" placeholder="description" required /> </br>
@@ -68,13 +72,21 @@
         <input type="text" name="end_time" placeholder="end_time(YYYY-MM-DD HH:MI:SS)" required /> </br>
         <input type="submit" value="Create me!" />
     </form>
+    </div>
+
 </br>
 <h2>Check Your Guest List</h2>
+    <div class="container">
     <form action="/guest_status" method="POST">
+        <br>
         <input type="int" name="party_id" placeholder="Party ID" required /> </br>
         <input type="submit" value="Check Guest Status" />
     </form>
-<a href="/logout">Logout</a>
+    </div>
+    <form action="/logout">
+        <input type="submit" value="logout">
+    </form>
+
 
 </body>
 
