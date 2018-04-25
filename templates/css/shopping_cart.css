@@ -1,10 +1,23 @@
 body {
     font-family: courier;
     text-indent: 5em;
- }
 
-.cart {
-    left:40%
+}
+
+table {
+    text-align: center;
+}
+
+th:nth-child(even) {
+ background-color: #ffe4e1;
+}
+
+th:nth-child(odd) {
+ background-color: #b0e0e6;
 }
 
 
+.container {
+  width: 500px;
+  clear: both;
+}
